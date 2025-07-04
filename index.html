@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guess the Number Game</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            box-sizing: border-box;
+
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            height: 100vh;
+            background-color: gray;
+            padding: 1rem;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 350px;
+            padding: 50px;
+            border-radius: 20px;
+            background-color: black;
+            box-shadow: 0 0 15px black;
+            color: white;
+            box-sizing: border-box;
+
+        }
+
+        input {
+            width: 80%;
+            padding: 10px;
+            border-radius: 25px;
+            font-size: 1.2em;
+            text-align: center;
+            margin: 20px;
+        }
+
+        button {
+            background-color: green;
+            color: white;
+            padding: 10px;
+            border-radius: 10px;
+            margin: 10px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: darkgreen;
+        }
+
+        #result {
+            font-weight: bold;
+        }
+
+        h1 {
+            margin: 20px
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>Guess the Number Game</h1>
+
+        <div id="game">
+            <p>Pick a number between</p>
+            <p>1 and 100.</p>
+            <input id="guessInput" type="number">
+            <button type="submit" id="submit">Submit</button>
+
+            <p id="attempts"></p>
+            <p id="result">YOU WON</p>
+        </div>
+        <button id="playagain">Play Again</button>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            let guessInput = document.getElementById("guessInput");
+            let submit = document.getElementById("submit")
+            let resultmesg = document.getElementById("result")
+            let attemptsdisplay = document.getElementById("attempts")
+            let playagain = document.getElementById("playagain")
+            attempts = 0
+
+            let random = Math.floor(Math.random() * 100) + 1;
+            submit.addEventListener("click", () => {
+
+                let guess = Number(guessInput.value);
+                console.log(random, guess)
+
+                if (guess === random) {
+                    resultmesg.textContent = "YOU WON"
+                    guessInput.disabled = true;
+                    submit.disabled = true;
+
+
+                }
+                else if (guess > random) {
+                    resultmesg.textContent = "TOO HIGH"
+
+                }
+                else if (guess < random) {
+                    resultmesg.textContent = "TOO LOW"
+                }
+
+                attempts++
+                attemptsdisplay.textContent = `Number of Attempts: ${attempts}`
+                guessInput.value = ''
+
+
+            })
+            playagain.addEventListener("click", () => {
+                guessInput.value = ""
+                attempts = 0;
+                guessInput.disabled = false;
+                submit.disabled = false;
+                resultmesg.textContent = "";
+                attemptsdisplay.textContent = '';
+            })
+        })
+
+
+    </script>
+</body>
+
+</html>
