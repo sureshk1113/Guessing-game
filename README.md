@@ -6,7 +6,8 @@ A simple and fun number guessing game built using **HTML**, **CSS**, and **JavaS
 
 ## 🚀 Live Demo
 
-🔗 [Play the Game](https://sureshk1113.github.io/GuessingGame/)
+🔗 [Play the Game](https://sureshk1113.github.io/Guessing-game/)
+
 
 ---
 
